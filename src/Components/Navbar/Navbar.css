@@ -1,0 +1,15 @@
+.navbar {
+  width: 100%;
+  height: 35px;
+  position: relative;
+  background-color: #95a5a6;
+}
+
+.navbarLink {
+  text-decoration: none;
+  color: white;
+  padding: 20px;
+}
+.navbarLink:hover {
+  color: aquamarine;
+}

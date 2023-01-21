@@ -1,0 +1,22 @@
+.weatherchart {
+  max-width: 1200px;
+  width: 100%;
+  /* background-color: #CACFD2 ; */
+  margin: 10px auto;
+}
+
+.weatherdata{
+    width: 100%;
+    
+}
+.tempmax{
+    display: flex;
+    
+}
+.tempmin{
+    display: flex;
+}
+h1{
+    font-weight: lighter
+    
+}

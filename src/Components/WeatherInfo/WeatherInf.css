@@ -1,0 +1,9 @@
+.celsius {
+  display: flex;
+  justify-content: center;
+}
+
+.fahrenheit {
+  display: flex;
+  justify-content: center;
+}
