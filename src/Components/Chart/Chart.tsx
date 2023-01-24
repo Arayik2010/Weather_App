@@ -1,81 +1,51 @@
 import React from "react";
-import { Line } from "@ant-design/plots";
-import './Chart.css'
+import "./Chart.css";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+} from "recharts";
+import { useWeatherData } from "../../Hooks/Hooks";
+
+import moment from "moment";
 
 export const Chart = () => {
-  const data = [
-    {
-      year: "1991",
-      value: 3,
-    },
-    {
-      year: "1992",
-      value: 4,
-    },
-    {
-      year: "1993",
-      value: 3.5,
-    },
-    {
-      year: "1994",
-      value: 5,
-    },
-    {
-      year: "1995",
-      value: 4.9,
-    },
-    {
-      year: "1996",
-      value: 6,
-    },
-    {
-      year: "1997",
-      value: 7,
-    },
-    {
-      year: "1998",
-      value: 9,
-    },
-    {
-      year: "1999",
-      value: 13,
-    },
-  ];
-  const config = {
-    data,
-    xField: "year",
-    yField: "value",
-    label: {},
-    point: {
-      size: 5,
-      shape: "diamond",
-      style: {
-        fill: "white",
-        stroke: "#5B8FF9",
-        lineWidth: 2,
-      },
-    },
-    tooltip: {
-      showMarkers: false,
-    },
-    state: {
-      active: {
-        style: {
-          shadowBlur: 4,
-          stroke: "#000",
-          fill: "red",
-        },
-      },
-    },
-    interactions: [
-      {
-        type: "marker-active",
-      },
-    ],
-  };
+  const { forecastData } = useWeatherData();
+
+  const configData = forecastData?.list?.map((el) => {
+    return {
+      name: moment(el.dt_txt).format("dddd").substring(0, 3),
+      max_temp: el.main.temp_max,
+      min_temp: el.main.temp_min,
+      amt: el.main.temp,
+    };
+  });
+
   return (
-    <div className="chart">
-      <Line {...config} />
+    <div>
+      <LineChart
+        width={500}
+        height={300}
+        data={configData}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Line type="monotone" dataKey="max_temp" stroke="#8884d8" />
+        <Line type="monotone" dataKey="min_temp" stroke="#82ca9d" />
+      </LineChart>
     </div>
   );
 };

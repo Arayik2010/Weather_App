@@ -13,8 +13,6 @@ export const WeatherChart = () => {
     setDetals((prev) => !prev);
   };
 
-  console.log(weatherData);
-
   const timestampToTime = useCallback((timestamp: number) => {
     const time = moment.unix(timestamp).format("HH:mm:ss");
     return time;
@@ -24,22 +22,25 @@ export const WeatherChart = () => {
     <div className="weatherchart">
       <div className="weatherdata">
         {weatherData.map((el: IProduct) => (
-          <div key={el.id}>
-            <p>
-              {el.name}, {el.sys.country}
-            </p>
+          <div className="containerinfodata" key={el.id}>
+            <div className="moretempinfo">
+              <h2>
+                {el.name}, {el.sys.country}
+              </h2>
 
-            <p>{el.weather[0].main}</p>
-            <div className="tempmax">
-              <h1>Temp-Max: {Math.floor(el.main.temp_max)}</h1>
-              <p>o</p>
-              <h1>C</h1>
+              <h3>{el.weather[0].main}</h3>
+              <div className="tempmax">
+                <h1>Temp-Max: {Math.floor(el.main.temp_max)}</h1>
+                <p>o</p>
+                <h1>C</h1>
+              </div>
+              <div className="tempmin">
+                <h1>Temp-Min: {Math.floor(el.main.temp_min)}</h1>
+                <p>o</p>
+                <h1>C</h1>
+              </div>
             </div>
-            <div className="tempmin">
-              <h1>Temp-Min: {Math.floor(el.main.temp_min)}</h1>
-              <p>o</p>
-              <h1>C</h1>
-            </div>
+
             <div className="showdetals">
               <button onClick={showItemDetals}>
                 {detals ? "Hide Detals" : "Show Detals"}
@@ -59,7 +60,9 @@ export const WeatherChart = () => {
           </div>
         ))}
       </div>
-      <Chart />
+      <div className="weatherchartdata">
+        <Chart />
+      </div>
     </div>
   );
 };

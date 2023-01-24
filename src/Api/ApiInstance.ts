@@ -1,4 +1,4 @@
 
 export const apiWeatherIstance = {
-    baseWeatherUrl: `https://api.github.com/users`,
+    baseWeatherUrl: `https://api.openweathermap.org/data/2.5`,
   };

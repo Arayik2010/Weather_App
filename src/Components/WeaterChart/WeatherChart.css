@@ -1,22 +1,41 @@
 .weatherchart {
   max-width: 1200px;
   width: 100%;
-  /* background-color: #CACFD2 ; */
+  display: flex;
   margin: 10px auto;
+  background-color:#D6EAF8 ;
+  height: 600px;
+}
+@media screen and (max-width: 950px) {
+  .weatherchart {
+    display: block;
+  }
 }
 
-.weatherdata{
-    width: 100%;
-    
+.weatherdata {
+  width: 100%;
 }
-.tempmax{
-    display: flex;
-    
+.tempmax {
+  display: flex;
 }
-.tempmin{
-    display: flex;
+.tempmin {
+  display: flex;
 }
-h1{
-    font-weight: lighter
-    
+h1 {
+  font-weight: lighter;
+}
+.containerinfodata {
+  display: flex;
+  justify-content: space-between;
+}
+.showdetals {
+  margin: 30px 50px;
+  text-align: center;
+  width: 200px;
+}
+.moretempinfo {
+  margin-left: 50px;
+}
+.weatherchartdata {
+  margin-top: 30px;
 }
